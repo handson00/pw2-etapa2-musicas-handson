@@ -30,7 +30,7 @@ POST {{url}}/artista
 Content-Type: application/json
 
 {
-    "nome": "Djavan",
+    "nome": "Ivete Sangalo",
     "pais": "Brasil"
 }
 
@@ -39,7 +39,7 @@ POST {{url}}/artista
 Content-Type: application/json
 
 {
-    "nome": "Djavan"
+    "nome": "Ivete Sangalo"
 }
 
 ### Atualizar (200)
@@ -47,8 +47,8 @@ PUT {{url}}/artista/1
 Content-Type: application/json
 
 {
-    "nome": "Queen",
-    "pais": "Inglaterra"
+    "nome": "Anitta",
+    "pais": "Brasil"
 }
 
 ### Atualizar id que não existe (404)
@@ -85,7 +85,7 @@ GET {{url}}/artista/99/musicas
 GET {{url}}/musica
 
 ### Filtrar por ano (200)
-GET {{url}}/musica?ano=1982
+GET {{url}}/musica?ano=2021
 
 ### Filtro de ano inválido (400)
 GET {{url}}/musica?ano=abc
@@ -101,8 +101,8 @@ POST {{url}}/musica
 Content-Type: application/json
 
 {
-    "titulo": "Don't Stop Me Now",
-    "ano": 1978,
+    "titulo": "Show das Poderosas",
+    "ano": 2013,
     "artistaId": 1
 }
 
@@ -140,8 +140,8 @@ PUT {{url}}/musica/1
 Content-Type: application/json
 
 {
-    "titulo": "Bohemian Rhapsody",
-    "ano": 1975,
+    "titulo": "Envolver",
+    "ano": 2021,
     "artistaId": 1
 }
 

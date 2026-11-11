@@ -1,10 +1,10 @@
 let musicas = [
-    {id: 1, titulo: 'Bohemian Rhapsody', ano: 1975, artistaId: 1},
-    {id: 2, titulo: 'Another One Bites the Dust', ano: 1980, artistaId: 1},
-    {id: 3, titulo: 'Pais e Filhos', ano: 1989, artistaId: 2},
-    {id: 4, titulo: 'Tempo Perdido', ano: 1986, artistaId: 2},
-    {id: 5, titulo: 'Billie Jean', ano: 1982, artistaId: 3},
-    {id: 6, titulo: 'Thriller', ano: 1982, artistaId: 3}
+    {id: 1, titulo: 'Envolver', ano: 2021, artistaId: 1},
+    {id: 2, titulo: 'Vai Malandra', ano: 2017, artistaId: 1},
+    {id: 3, titulo: 'Infiel', ano: 2016, artistaId: 2},
+    {id: 4, titulo: 'Supera', ano: 2019, artistaId: 2},
+    {id: 5, titulo: 'Meteoro', ano: 2013, artistaId: 3},
+    {id: 6, titulo: 'Chuva de Arroz', ano: 2012, artistaId: 3}
 ]
 let proximoId = 7
 

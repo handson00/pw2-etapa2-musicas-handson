@@ -1,7 +1,7 @@
 let artistas = [
-    {id: 1, nome: 'Queen', pais: 'Reino Unido'},
-    {id: 2, nome: 'Legião Urbana', pais: 'Brasil'},
-    {id: 3, nome: 'Michael Jackson', pais: 'Estados Unidos'}
+    {id: 1, nome: 'Anitta', pais: 'Brasil'},
+    {id: 2, nome: 'Marília Mendonça', pais: 'Brasil'},
+    {id: 3, nome: 'Luan Santana', pais: 'Brasil'}
 ]
 let proximoId = 4
 
