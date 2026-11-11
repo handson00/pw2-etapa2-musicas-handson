@@ -2,7 +2,7 @@
 
 Trabalho da Etapa II de Programação Web II (IFMA Campus Coelho Neto).
 
-API REST feita com Node.js e Express para cadastrar artistas e as músicas de cada um. Não tem autenticação e os dados ficam guardados em arrays na memória, então voltam ao começo quando o servidor reinicia.
+É uma API feita com Node.js e Express onde dá para cadastrar artistas e as músicas de cada artista. Não tem login e os dados ficam guardados em arrays, então quando o servidor reinicia tudo volta ao começo.
 
 ## Como rodar
 
@@ -11,100 +11,78 @@ npm install
 npm start
 ```
 
-O servidor sobe em `http://localhost:3000`. Para mudar a porta, copie o `.env.example` para `.env` e altere o valor de `PORT`.
+Depois é só abrir `http://localhost:3000`. Se quiser mudar a porta, copie o arquivo `.env.example` para `.env` e troque o valor de PORT.
 
-## Recursos
+## Como funciona
 
-**Artista**
+Tem dois recursos:
 
-| Campo | Tipo | Observação |
-|---|---|---|
-| id | número | gerado pela API |
-| nome | texto | obrigatório |
-| pais | texto | obrigatório |
+- **Artista**: id, nome e pais
+- **Música**: id, titulo, ano e artistaId
 
-**Música**
+O `artistaId` da música é o id de um artista que já existe. Se o artista não existir, a API devolve erro 400.
 
-| Campo | Tipo | Observação |
-|---|---|---|
-| id | número | gerado pela API |
-| titulo | texto | obrigatório |
-| ano | número | obrigatório |
-| artistaId | número | obrigatório, o artista precisa existir |
-
-Um artista pode ter várias músicas, e cada música pertence a um artista (`artistaId`).
-
-A API já começa com 3 artistas e 6 músicas cadastrados.
+A API já começa com 3 artistas e 6 músicas para facilitar os testes.
 
 ## Rotas
 
-**Artista**
+Artista:
 
-| Método | Rota | O que faz |
-|---|---|---|
-| GET | /artista | lista todos os artistas |
-| GET | /artista/:id | busca um artista pelo id |
-| POST | /artista | cadastra um artista |
-| PUT | /artista/:id | atualiza um artista |
-| DELETE | /artista/:id | remove um artista (não pode se ele tiver músicas) |
-| GET | /artista/:id/musicas | lista as músicas de um artista |
+- GET /artista (lista todos)
+- GET /artista/:id (busca um)
+- POST /artista (cadastra)
+- PUT /artista/:id (atualiza)
+- DELETE /artista/:id (apaga, mas não deixa se o artista ainda tiver músicas)
+- GET /artista/:id/musicas (lista as músicas daquele artista)
 
-**Música**
+Música:
 
-| Método | Rota | O que faz |
-|---|---|---|
-| GET | /musica | lista todas as músicas |
-| GET | /musica?ano=1982 | filtra as músicas por ano |
-| GET | /musica/:id | busca uma música pelo id |
-| POST | /musica | cadastra uma música |
-| PUT | /musica/:id | atualiza uma música |
-| DELETE | /musica/:id | remove uma música |
+- GET /musica (lista todas)
+- GET /musica?ano=2021 (filtra pelo ano)
+- GET /musica/:id (busca uma)
+- POST /musica (cadastra)
+- PUT /musica/:id (atualiza)
+- DELETE /musica/:id (apaga)
 
-## Exemplos
+## Exemplos de envio
 
-Cadastrar um artista:
+Cadastrar artista:
 
 ```
 POST /artista
 {
-    "nome": "Djavan",
+    "nome": "Ivete Sangalo",
     "pais": "Brasil"
 }
 ```
 
-Cadastrar uma música:
+Cadastrar música:
 
 ```
 POST /musica
 {
-    "titulo": "Thriller",
-    "ano": 1982,
-    "artistaId": 3
+    "titulo": "Show das Poderosas",
+    "ano": 2013,
+    "artistaId": 1
 }
 ```
 
-## Status HTTP
+## Códigos de resposta
 
-| Código | Quando |
-|---|---|
-| 200 | consulta, atualização e exclusão com sucesso |
-| 201 | cadastro com sucesso |
-| 400 | dado inválido ou faltando, id inválido, artistaId que não existe |
-| 404 | artista, música ou rota não encontrada |
+- 200: deu certo (buscar, atualizar e apagar)
+- 201: cadastrado com sucesso
+- 400: dado faltando ou inválido
+- 404: não encontrou o artista, a música ou a rota
 
-As mensagens de erro vêm em JSON, no formato `{ "message": "..." }`.
+Os erros sempre vêm em JSON, assim: `{ "message": "..." }`
 
-## Estrutura
+## Pastas
 
-```
-index.js          inicia o servidor e registra as rotas
-routes/           liga cada URL a um método do controller
-controllers/      recebe a requisição, valida e responde
-models/           guarda os dados nos arrays e faz as operações
-helpers/          funções de validação reaproveitadas
-requests.http     requisições para testar as rotas
-```
+- `routes`: liga cada rota ao controller
+- `controllers`: recebe o pedido, valida e responde
+- `models`: guarda os dados e mexe nos arrays
+- `helpers`: funções de validação
 
-## Testando
+## Testes
 
-O arquivo `requests.http` tem uma requisição para cada rota, incluindo casos de erro. Para usar, instale a extensão REST Client no VS Code, abra o arquivo e clique em "Send Request" acima de cada requisição.
+O arquivo `requests.http` tem um pedido para cada rota, inclusive os de erro. Para usar, instale a extensão REST Client no VS Code, abra o arquivo e clique em "Send Request".
