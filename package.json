@@ -1,0 +1,14 @@
+{
+  "name": "pw2-etapa2-musicas-handson",
+  "version": "1.0.0",
+  "description": "API REST de Musicas e Artistas",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "express": "^5.0.0"
+  }
+}
